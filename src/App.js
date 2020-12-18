@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+
+// COUNTER
+
+// import React, { useState } from 'react';
+// import { Provider } from 'react-redux';
+// import CounterInput from './components/CounterInput';
+// import CounterOutput from './components/CounterOutput';
+
+// import store from './store/Store';
+
+// function App() {
+
+//   return (
+//     <Provider store={store}>
+//       <div>
+//         <CounterInput />
+//         <br />
+//         <CounterOutput />
+//       </div>
+//     </Provider>
+
+//   );
+// }
+
+// export default App;
+
+
+import React from 'react';  
+import AddTodos from './components/AddTodos';
+import TodoList from './components/TodoList';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TodoList />
+
+      <AddTodos />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
