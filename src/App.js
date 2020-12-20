@@ -5,7 +5,6 @@
 // import { Provider } from 'react-redux';
 // import CounterInput from './components/CounterInput';
 // import CounterOutput from './components/CounterOutput';
-
 // import store from './store/Store';
 
 // function App() {
@@ -26,17 +25,18 @@
 
 
 import React from 'react';  
-import AddTodos from './components/AddTodos';
+import { Provider } from 'react-redux';
 import TodoList from './components/TodoList';
-
+import store from "./store/Store";
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <TodoList />
 
-      <AddTodos />
-    </div>
+    
+    </Provider>
+    
   )
 }
 
