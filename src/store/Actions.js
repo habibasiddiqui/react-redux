@@ -21,14 +21,24 @@
 //  TODO LIST
 
 
-const add = 'ADD';
-const addAction = () => ({
-        type: add,
-        todo: {
-            // id: 3,
-            title: 'new'
-        }
-        // todo: 'new'
-    }
+export const add = 'ADD';
+export const del = 'DEL';
+export const edit = 'EDIT';
+
+export const addAction = (task) => ({
+    type: add,
+    payload: task
+}
 )
-export default addAction
+
+export const delAction = (id) => ({
+    type: del,
+    payload: id
+}
+)
+
+export const editAction = (obj) => ({
+    type: edit,
+    payload: obj
+}
+)

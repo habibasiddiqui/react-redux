@@ -43,22 +43,42 @@ import { v4 as uuidv4 } from 'uuid';
 import AddTodos from './AddTodos'
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
-import addAction from '../store/Actions';
+import { delAction, editAction } from '../store/Actions';
 
 function TodoList() {
     const dispatch = useDispatch();
 
     const tasks = useSelector(state => state.tasks)
+
+    // const addTask = (title) => {
+    //             setTasks([...tasks, { id: uuidv4(), title }]);
+    //         }
     
+    const handleDelete = (id) => {
+        dispatch(delAction(id));
+    }
+
+    const handleEdit = (id, title) => {
+        const edited = prompt('Enter task: ', title)
+        dispatch(editAction({edited, id}));
+
+    }
+
     return (
         <div>
+            <AddTodos  />
             <ul>
                 {tasks.map( item => (
-                    <li key={item.id}>{item.title}</li> 
+                    <li key={item.id}>{item.title}&nbsp; &nbsp; &nbsp;
+                    <button onClick={()=>handleEdit(item.id, item.title)}>Edit</button> 
+                    <button onClick={()=>handleDelete(item.id)}>Del</button>
+                    </li> 
+                    
                 ))}
             </ul>
-            {/* <AddTodos addTask={addTask} /> */}
-            <button onClick={() => dispatch(addAction())}>Add</button>
+
+            {/* <button onClick={() => dispatch(addAction())}>Add</button> */}
+
         </div>
     )
 }
