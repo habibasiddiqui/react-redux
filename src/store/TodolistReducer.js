@@ -27,31 +27,17 @@ const TodolistReducer = (state = initState, action) => {
                 tasks: newTasks
             }
         case edit:
-            console.log(action.payload)
-            const index = state.tasks.indexOf(action.payload.id);
+            // console.log(action.payload.id)
             const temp = [...state.tasks];
-            temp.map(item => {
-                if(item.id==index)
-                    temp[index].title=action.payload.edited
+            temp.find(item => {
+                if(item.id == action.payload.id)
+                    return item.title=action.payload.edited
             })
-            console.log(temp)
-            // const temp = state.tasks.map(item => {
-            //     if(item.id==action.payload.id)
-            //       item.title=action.payload.edited
-            // })
-            // return {
-            //     ...state,
-            // }
-
-            // const changed = state.tasks.filter( item => item.id!=action.payload.id)
-            
-            // console.log(state, changed)
-            // return {
-            //     ...state,
-            //     tasks: [...changed, action.payload]
-            // }
-
-
+            // console.log(temp)
+            return {
+                ...state,
+                tasks: temp
+            }
         default:
             return state;
     }
