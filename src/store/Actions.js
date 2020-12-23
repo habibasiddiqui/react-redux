@@ -22,8 +22,9 @@
 
 
 export const add = 'ADD';
-export const del = 'DEL';
+export const del = 'DELETE';
 export const edit = 'EDIT';
+export const delAll = 'DELETE_ALL';
 
 export const addAction = (task) => ({
     type: add,
@@ -40,5 +41,11 @@ export const delAction = (id) => ({
 export const editAction = (obj) => ({
     type: edit,
     payload: obj
+}
+)
+
+export const delAllAction = () => ({
+    type: delAll
+    
 }
 )

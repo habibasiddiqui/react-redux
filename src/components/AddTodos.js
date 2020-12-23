@@ -36,11 +36,12 @@
 
 
 import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import {addAction} from '../store/Actions';
+import { useDispatch, useSelector } from "react-redux";
+import {addAction, delAllAction } from '../store/Actions';
 import { v4 as uuidv4 } from 'uuid';
 
 function AddTodos() {
+    const tasks = useSelector(state => state.tasks)
 
     const dispatch = useDispatch();
 
@@ -60,11 +61,18 @@ function AddTodos() {
         e.target.firstChild.value = '';
     }
 
+    const handleDeleteAll = () => {
+
+        dispatch(delAllAction());
+        console.log(tasks)
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input type='text'  onChange={handleChange} />
                 <button type='submit'>Add</button>
+                <button onClick={handleDeleteAll}>Delete All</button>
             </form>
 
         </div>

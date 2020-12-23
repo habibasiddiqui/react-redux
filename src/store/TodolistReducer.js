@@ -1,16 +1,12 @@
-import { add, del, edit } from "./Actions";
+import { add, del, edit, delAll } from "./Actions";
 
 const initState = {
     tasks: [
         {
-            id: 1,
+            id:1,
             title: 'abc'
-        },
-        {
-            id: 2,
-            title: 'def'
         }
-    ]
+    ]   
 };
 
 const TodolistReducer = (state = initState, action) => {
@@ -37,6 +33,15 @@ const TodolistReducer = (state = initState, action) => {
             return {
                 ...state,
                 tasks: temp
+            }
+        case delAll:
+            let emptyTasks = state.tasks;
+            emptyTasks = []
+            return {
+
+                ...state,
+                tasks: emptyTasks
+ 
             }
         default:
             return state;

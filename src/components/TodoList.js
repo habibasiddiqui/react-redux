@@ -63,18 +63,20 @@ function TodoList() {
         dispatch(editAction({edited, id}));
 
     }
-
+console.log(tasks)
     return (
         <div>
             <AddTodos  />
             <ul>
-                {tasks.map( item => (
+                {tasks.length>0 ? (
+                    tasks.map( item => (
                     <li key={item.id}>{item.title}&nbsp; &nbsp; &nbsp;
                     <button onClick={()=>handleEdit(item.id, item.title)}>Edit</button> 
                     <button onClick={()=>handleDelete(item.id)}>Del</button>
-                    </li> 
-                    
-                ))}
+                    </li> )
+                    )) : (
+                        <span>No tasks left, yay!</span>)
+                }
             </ul>
 
             {/* <button onClick={() => dispatch(addAction())}>Add</button> */}
