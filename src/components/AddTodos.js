@@ -64,8 +64,9 @@ function AddTodos() {
     const handleDeleteAll = () => {
 
         dispatch(delAllAction());
-        console.log(tasks)
+        console.log('in handleDelAll', tasks)
     }
+    console.log('outside handleDelAll',tasks)
 
     return (
         <div>

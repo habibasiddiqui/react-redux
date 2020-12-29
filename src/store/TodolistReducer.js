@@ -27,7 +27,7 @@ const TodolistReducer = (state = initState, action) => {
             const temp = [...state.tasks];
             temp.find(item => {
                 if(item.id == action.payload.id)
-                    return item.title=action.payload.edited
+                    item.title=action.payload.edited
             })
             // console.log(temp)
             return {
@@ -35,14 +35,16 @@ const TodolistReducer = (state = initState, action) => {
                 tasks: temp
             }
         case delAll:
-            let emptyTasks = state.tasks;
+            let emptyTasks = [...state.tasks];
             emptyTasks = []
             return {
 
                 ...state,
-                tasks: emptyTasks
+                tasks: [...emptyTasks]
  
             }
+            // state.tasks.length = 0;
+            // return state;
         default:
             return state;
     }
